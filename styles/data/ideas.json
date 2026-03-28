@@ -2,34 +2,39 @@
   {
     "slug": "airbnb-investment",
     "title": "Airbnb Business",
-    "budget": "₹2L Start",
-    "category": "Real Estate",
-    "status": "Executing",
-    "description": "Building a high-cashflow short-term rental empire with low overhead.",
+    "budget": "₹2,00,000 START",
+    "category": "REAL ESTATE EMPIRE",
+    "status": "EXECUTING",
+    "valuation": "₹1.20 Cr (Year 2)",
+    "description": "Building a <span class='gold-text'>High-Cashflow</span> short-term rental empire in Thane/Kalyan with zero-deposit arbitrage.",
     "steps": [
       {
         "id": 1,
-        "title": "Sourcing Property",
-        "desc": "Identify owners in high-demand areas open to corporate sub-letting.",
-        "icon": "home"
+        "title": "PROPERTY SOURCING",
+        "desc": "Identify premium studios in <b class='text-gold-500'>Thane-West</b> open to corporate sub-letting & revenue-share.",
+        "icon": "🎯",
+        "color": "yellow"
       },
       {
         "id": 2,
-        "title": "The Glow-Up",
-        "desc": "Install 'Quiet Luxury' interior design and professional lighting.",
-        "icon": "sparkles"
+        "title": "THE GLOW-UP",
+        "desc": "Execute <b class='text-white'>'Quiet Luxury'</b> interiors with professional night-flash lighting setup.",
+        "icon": "✨",
+        "color": "gold"
       },
       {
         "id": 3,
-        "title": "Content Studio Setup",
-        "desc": "Optimizing the space to double as a high-end shoot location.",
-        "icon": "camera"
+        "title": "STUDIO OPTIMIZATION",
+        "desc": "Space engineering to double as a <b class='text-white'>Premium Shoot Location</b> for influencers.",
+        "icon": "📸",
+        "color": "blue"
       },
       {
         "id": 4,
-        "title": "Listing & Launch",
-        "desc": "Going live on Airbnb and Instagram to drive bookings.",
-        "icon": "rocket"
+        "title": "AGGRESSIVE LAUNCH",
+        "desc": "Deploy <b class='text-gold-500'>Fortune 500 CEO</b> style branding on Airbnb & IG for max bookings.",
+        "icon": "🚀",
+        "color": "green"
       }
     ]
   }
