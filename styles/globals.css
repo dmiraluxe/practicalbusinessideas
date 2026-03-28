@@ -1,71 +1,119 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;700;900&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --gold-primary: #D4AF37;
-  --gold-glow: rgba(212, 175, 55, 0.5);
-  --luxury-black: #050505;
+  --gold-primary: #FFD700; /* Brighter gold for better visibility */
+  --gold-glow: rgba(255, 215, 0, 0.6);
+  --luxury-black: #000000; /* Pure black for maximum contrast */
+  --glass-white: rgba(255, 255, 255, 0.08);
 }
 
+/* --- GLOBAL STYLES --- */
 body {
   background: var(--luxury-black);
-  color: white;
+  color: #ffffff !important; /* Force pure white */
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* Ensure all p and span are bold and white */
+p, span, div {
+  color: #ffffff !important;
+  font-weight: 700 !important; /* Bold by default for readability */
+}
+
+/* --- GOLD & LUXURY EFFECTS --- */
 .gold-text {
-  background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771B);
+  background: linear-gradient(to right, #BF953F, #FCF6BA, #D4AF37, #FBF5B7, #AA771B);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-weight: 900 !important;
 }
 
-.luxury-card {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(212, 175, 55, 0.2);
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+.glow-box {
+  box-shadow: 0 0 20px var(--gold-glow);
+}
+
+/* --- CARD & BORDER LOGIC --- */
+.luxury-card, .luxury-border {
+  background: var(--glass-white);
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255, 215, 0, 0.4) !important; /* Stronger border */
+  border-radius: 40px;
+  transition: all 0.4s ease;
+  width: 100%;
+  max-width: 100%; /* Prevents overflow */
+  box-sizing: border-box; /* Crucial for mobile */
 }
 
 .luxury-card:hover {
-  border-color: var(--gold-primary);
-  box-shadow: 0 0 30px var(--gold-glow);
-  transform: translateY(-10px);
+  border-color: var(--gold-primary) !important;
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(255, 215, 0, 0.2);
 }
 
-.ceo-glow {
-  filter: drop-shadow(0 0 20px var(--gold-glow));
-  animation: float 6s ease-in-out infinite;
-}
-
+/* --- ANIMATIONS --- */
 @keyframes float {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
-}
-/* --- MOBILE OPTIMIZATION TWEAKS --- */
-@media (max-width: 768px) {
-    h1 { font-size: 4rem !important; }
-    .luxury-border { padding: 2rem !important; border-radius: 30px !important; }
-    
-    /* Responsive Grid for mobile */
-    .grid { gap: 1rem !important; }
-    
-    /* Roadmap layout adjustment */
-    #roadmap .flex-col { gap: 2rem !important; }
-    
-    /* Button resizing for thumb access */
-    .btn-premium { padding: 1.5rem !important; font-size: 0.7rem !important; }
-    
-    /* Scaling down big avatars */
-    .w-48, .h-48 { width: 120px !important; height: 120px !important; }
-    .text-7xl { font-size: 3rem !important; }
+  50% { transform: translateY(-15px); }
 }
 
-/* Ensure smooth touch scrolling */
-body {
-    -webkit-overflow-scrolling: touch;
-    touch-action: manipulation;
+.avatar-motion {
+  animation: float 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 15px var(--gold-glow));
+}
+
+/* --- MOBILE & RESPONSIVENESS (FORCE FIX) --- */
+@media (max-width: 768px) {
+  /* Prevent content overflow */
+  .container, #roadmap, #dashboard {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    width: 100vw !important;
+    overflow-x: hidden;
+  }
+
+  /* Scale down massive titles */
+  h1 { 
+    font-size: 3.5rem !important; 
+    line-height: 1.1 !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* Fix for text going outside borders */
+  .luxury-card, .luxury-border {
+    padding: 1.5rem !important; /* Compact padding for small screens */
+    margin-bottom: 1rem;
+  }
+
+  /* Descriptions visibility */
+  #stepDesc p, #stepDesc div {
+    font-size: 1rem !important; /* Standard readable size */
+    line-height: 1.5 !important;
+  }
+
+  /* Button adjustment */
+  .btn-premium {
+    width: 100% !important;
+    padding: 1.2rem !important;
+    font-size: 0.8rem !important;
+    border-radius: 20px !important;
+  }
+
+  /* Scaling down avatars for mobile */
+  .w-40, .h-40, .w-48, .h-48 { 
+    width: 100px !important; 
+    height: 100px !important; 
+  }
+}
+
+/* Fix for touch-screen smoothness */
+html, body {
+  scroll-behavior: smooth;
+  touch-action: manipulation;
 }
