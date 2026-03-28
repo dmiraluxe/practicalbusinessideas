@@ -1,80 +1,67 @@
 import { motion } from 'framer-motion';
-import ideas from '../data/ideas.json';
 import Link from 'next/link';
+import ideas from '../data/ideas.json';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-black text-white font-sans selection:bg-gold-500/30">
-      {/* 1. CINEMATIC HERO SECTION */}
-      <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
-        {/* Animated Background Glow */}
-        <div className="absolute inset-0 z-0 bg-particles opacity-20" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold-600/10 blur-[120px] rounded-full animate-glow-slow" />
+    <div className="min-h-screen bg-black overflow-hidden selection:bg-gold-500">
+      {/* BACKGROUND PARTICLES EFFECT */}
+      <div className="absolute inset-0 z-0 opacity-30 pointer-events-none">
+        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-gold-900/20 blur-[120px] rounded-full" />
+      </div>
 
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          className="z-10 text-center px-4"
-        >
-          <h2 className="text-gold-500 uppercase tracking-[0.3em] text-xs mb-6 font-semibold">Visionary Intelligence v1.0</h2>
-          <h1 className="text-6xl md:text-8xl font-light tracking-tighter mb-4 text-gold-glow">
-            BUILDING <span className="italic font-serif text-white">EMPIRES</span>
-          </h1>
-          <p className="text-gray-400 tracking-widest uppercase text-sm mb-12">From Ideas to Global Influence</p>
-          
-          {/* Animated CEO Figure Placeholder */}
+      <main className="relative z-10 max-w-7xl mx-auto px-6 pt-20 pb-40">
+        {/* HERO SECTION */}
+        <section className="flex flex-col items-center text-center mb-32">
           <motion.div 
-            animate={{ y: [0, -15, 0] }}
-            transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
-            className="w-56 h-56 mx-auto mb-12 relative group"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="mb-8 ceo-glow"
           >
-            <div className="absolute inset-0 bg-gold-500/20 blur-2xl rounded-full group-hover:bg-gold-500/40 transition-all duration-700" />
-            <div className="relative z-10 w-full h-full border border-white/10 rounded-full flex items-center justify-center bg-black/40 backdrop-blur-md">
-                <span className="text-6xl">👑</span>
+            {/* THIS IS YOUR CEO AVATAR PLACEHOLDER */}
+            <div className="w-48 h-48 rounded-full border-2 border-gold-500 flex items-center justify-center bg-gradient-to-b from-gray-900 to-black text-6xl">
+              👑
             </div>
           </motion.div>
 
-          <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
-            <button className="px-10 py-4 bg-gold-600 hover:bg-gold-500 text-black rounded-full font-bold tracking-widest transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(212,175,55,0.4)]">
-              ENTER COMMAND CENTER
-            </button>
-          </div>
-        </motion.div>
-      </section>
+          <motion.h1 
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            className="text-6xl md:text-8xl font-playfair font-bold mb-4"
+          >
+            <span className="gold-text uppercase tracking-tighter">Empire Dashboard</span>
+          </motion.h1>
+          
+          <motion.p className="text-gray-400 text-xl tracking-[0.3em] uppercase font-light">
+            Manifesting Wealth Through Strategy
+          </motion.p>
+        </section>
 
-      {/* 2. IDEAS DASHBOARD */}
-      <section className="max-w-7xl mx-auto px-6 py-24">
-        <div className="flex justify-between items-end mb-16 border-b border-white/10 pb-8">
-          <div>
-            <h2 className="text-3xl font-light text-gold-500">Active Pipelines</h2>
-            <p className="text-gray-500 mt-2">Strategic business models in development.</p>
-          </div>
-          <div className="text-right font-mono text-gold-600">COUNT: {ideas.length}</div>
-        </div>
-
+        {/* PLANS GRID */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {ideas.map((idea) => (
-            <Link href={`/idea/${idea.slug}`} key={idea.slug}>
-              <motion.div
-                whileHover={{ y: -10, scale: 1.02 }}
-                className="group p-8 rounded-3xl bg-luxury-charcoal border border-white/5 hover:border-gold-500/50 transition-all duration-500 cursor-pointer relative overflow-hidden"
+          {ideas.map((idea, index) => (
+            <Link href={`/idea/${idea.slug}`} key={index}>
+              <motion.div 
+                whileHover={{ scale: 1.05 }}
+                className="luxury-card p-8 rounded-[30px] cursor-pointer group"
               >
-                <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity">
-                   <div className="w-2 h-2 rounded-full bg-gold-500 animate-pulse" />
-                </div>
-                <span className="text-[10px] uppercase tracking-widest text-gold-600 font-bold mb-4 block">{idea.category}</span>
-                <h3 className="text-2xl font-semibold mb-2 group-hover:text-gold-400 transition-colors">{idea.title}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed mb-6">{idea.description}</p>
-                <div className="flex justify-between items-center pt-6 border-t border-white/5">
-                  <span className="text-xs font-mono text-gray-500">{idea.budget}</span>
-                  <span className="text-xs font-bold text-green-500 uppercase tracking-tighter">{idea.status}</span>
+                <span className="text-gold-500 text-xs font-bold tracking-[0.4em] uppercase">{idea.category}</span>
+                <h2 className="text-3xl font-semibold my-4 group-hover:text-gold-400 transition-colors">{idea.title}</h2>
+                <div className="flex justify-between items-center mt-6">
+                  <span className="text-gray-500 font-mono italic">{idea.budget}</span>
+                  <div className="h-[1px] flex-grow mx-4 bg-white/10" />
+                  <span className="text-gold-600 font-bold">VIEW PLAN →</span>
                 </div>
               </motion.div>
             </Link>
           ))}
         </div>
-      </section>
+      </main>
+      
+      {/* BOTTOM DECOR */}
+      <footer className="fixed bottom-10 left-10 text-gold-900/50 font-serif italic text-sm">
+        Highly Ambitious • Global Influence • 2026
+      </footer>
     </div>
   );
 }
