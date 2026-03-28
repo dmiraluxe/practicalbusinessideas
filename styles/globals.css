@@ -45,3 +45,27 @@ body {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-20px); }
 }
+/* --- MOBILE OPTIMIZATION TWEAKS --- */
+@media (max-width: 768px) {
+    h1 { font-size: 4rem !important; }
+    .luxury-border { padding: 2rem !important; border-radius: 30px !important; }
+    
+    /* Responsive Grid for mobile */
+    .grid { gap: 1rem !important; }
+    
+    /* Roadmap layout adjustment */
+    #roadmap .flex-col { gap: 2rem !important; }
+    
+    /* Button resizing for thumb access */
+    .btn-premium { padding: 1.5rem !important; font-size: 0.7rem !important; }
+    
+    /* Scaling down big avatars */
+    .w-48, .h-48 { width: 120px !important; height: 120px !important; }
+    .text-7xl { font-size: 3rem !important; }
+}
+
+/* Ensure smooth touch scrolling */
+body {
+    -webkit-overflow-scrolling: touch;
+    touch-action: manipulation;
+}
